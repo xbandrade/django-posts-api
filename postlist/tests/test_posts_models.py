@@ -22,3 +22,7 @@ class PostModelTest(TestCase, PostMixin):
         setattr(post, field, 'a' * (max_length + 1))
         with self.assertRaises(ValidationError):
             post.full_clean()
+
+    def test_object_string_representation_returns_title(self):
+        post = self.make_post_object()
+        self.assertEqual(str(post), post.title)

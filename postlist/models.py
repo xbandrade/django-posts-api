@@ -7,6 +7,10 @@ class Post(models.Model):
     title = models.CharField(max_length=255, blank=False)
     content = models.TextField(blank=False)
     created_datetime = models.DateTimeField(auto_now_add=True)
+    updated_datetime = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
     def clean(self):
         super().clean()
@@ -17,3 +21,6 @@ class Post(models.Model):
         if len(self.title) > 255:
             raise ValidationError(
                 {'title': 'Title' + exceeded_text + '255 characters.'})
+
+    def __str__(self):
+        return self.title

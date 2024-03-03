@@ -46,6 +46,14 @@ class PostApiGETTest(APITestCase, PostMixin):
         self.assertEqual(response.data.get('count'), posts)
         self.assertIsNotNone(response.data.get('next'))
 
+    def test_get_call_does_not_show_hidden_updated_datetime_field(self):
+        post_data = self.get_post_data()
+        response = self.send_post_data(self.client, post_data)
+        pk = response.data.get('id')
+        response = self.client.get(reverse(self.details_url, args=(pk,)))
+        self.assertIsNotNone(response.data.get('created_datetime'))
+        self.assertIsNone(response.data.get('updated_datetime'))
+
 
 class PostApiPOSTTest(APITestCase, PostMixin):
     def test_valid_api_post_call_returns_status_code_201(self):
@@ -78,10 +86,10 @@ class PostApiPATCHTest(APITestCase, PostMixin):
         self.assertEqual(response.data.get('title'), new_title)
         self.assertEqual(response.data.get('content'), new_content)
 
-    def test_patch_call_to_invalid_post_returns_404(self):
+    def test_patch_call_to_invalid_post_returns_400(self):
         response = self.client.patch(
             reverse(self.details_url, args=(9999,)))
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_username_cannot_be_changed_by_patch_call(self):
         response = self.send_post_data(self.client, self.get_post_data())

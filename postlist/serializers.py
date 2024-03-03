@@ -10,8 +10,15 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['id', 'username', 'title', 'content', 'created_datetime']
+        read_only_fields = ['updated_datetime']
 
     def update(self, instance, validated_data):
         validated_data.pop('username', None)
         return super().update(instance, validated_data)
+
+
+class PostAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = '__all__'

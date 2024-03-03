@@ -1,4 +1,7 @@
 # flake8: noqa
+import os
+
+ADMIN_URL = os.environ.get('ADMIN_URL', 'admin/')
 
 AUTH_PASSWORD_VALIDATORS = [
     {
