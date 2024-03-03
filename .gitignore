@@ -1,0 +1,15 @@
+*.log
+*.pot
+*.pyc
+__pycache__
+venv
+*cache/
+*.sqlite3
+media
+*.bak
+/static
+htmlcov
+.coverage
+.env
+dump.json
+db.sql
