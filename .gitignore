@@ -13,3 +13,5 @@ htmlcov
 .env
 dump.json
 db.sql
+**/migrations/
+**/migrations/*.pyc
