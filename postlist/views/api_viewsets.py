@@ -18,10 +18,6 @@ class PostAPIViewSet(ModelViewSet):
     pagination_class = PostAPIPagination
     http_method_names = ['get', 'patch', 'post', 'delete']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
     def get_queryset(self):
         qs = super().get_queryset()
         return qs
