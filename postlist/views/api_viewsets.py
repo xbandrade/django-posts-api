@@ -20,7 +20,7 @@ class PostAPIViewSet(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs
+        return qs.order_by('-created_datetime')
 
     def get_object(self):
         pk = self.kwargs.get('pk', -1)
