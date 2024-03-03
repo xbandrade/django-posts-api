@@ -2,7 +2,7 @@
 
 ## ➡️ A Django API to store and retrieve posts made by users
 
-## 🌐 Deploy live on [Django Posts](https://djangoposts.onrender.com/)
+## 🌐 Deploy live on [Django Posts](https://djangoposts.onrender.com/swagger/)
 
 ## 💻 Technologies used:
   - Python 3.12.0
@@ -14,11 +14,11 @@
   - Pytest Django 4.8.0
 
 ## ⚙️ API Local Setup
-    - Clone this repository to your local machine
-    - Create a virtual environment with `python -m venv venv` and activate it
-    - Install the required packages with `pip install -r requirements.txt`
-    - Change the database settings in `config/settings/databases.py` by uncommenting the default database
-    - Run the server with `python manage.py runserver`
+  - Clone this repository to your local machine
+  - Create a virtual environment with `python -m venv venv` and activate it
+  - Install the required packages with `pip install -r requirements.txt`
+  - Change the database settings in `config/settings/databases.py` by uncommenting the default database
+  - Run the server with `python manage.py runserver`
 
 ## ❕Post Data Structure
   ```
